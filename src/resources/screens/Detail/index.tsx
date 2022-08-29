@@ -1,7 +1,6 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
 import Layout from '../../components/common/main-layout';
-import DetailWeather from '../../../components/DetailWeather';
+import DetailWeather from '../../components/DetailComponent';
 
 const Detail = () => {
   return (
