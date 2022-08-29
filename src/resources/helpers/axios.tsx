@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.weatherbit.io/v2.0/',
+  baseURL: 'http://api.weatherapi.com/v1/forecast.json?key=ed8f0460dac348aa85e33105222908&',
   timeout: 30000,
   // headers: {
   //   "X-Requested-With": "XMLHttpRequest",

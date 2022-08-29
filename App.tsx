@@ -5,7 +5,7 @@ import DetailWeather from './src/components/DetailWeather';
 export default function App() {
   return (
     <LinearGradient style={styles.linear} 
-    colors={['#e69042','#e69042','#fcd2b3',"#fec283", ]} start={{x:1,y:1}}>
+    colors={["#fec283",'#e69042','#e69042' ]} >
       <View style={styles.container}>
         <DetailWeather />
       </View>
