@@ -24,19 +24,39 @@ const data =[
 const colors=[
    "#faaf80","#faaf80","#fdbe8a","#ffd4ae","#ffd4ae","#ffd4ae"
 ]
-export default function WeekWeather() {
+export default function WeekWeather(props:any) {
+    const {data}=props
     const [dataWeekWeather,setDataWeekWeather]=useState<any[]>(data)
-
+    const getDayWeek =(day:string)=>{
+        const date = new Date(day)
+        const nowDay = date.getDay()
+        switch(nowDay){
+            case 1:
+                return 'MonDay';
+            case 2:
+                return 'Tuesday';
+            case 3:
+                return 'Wednesday';
+            case 4:
+                return 'Thusday';
+            case 5:
+                return 'Friday';
+            case 6:
+                return 'Saturday';
+            default:
+                return 'Sunday';
+            }
+    }
     return (
         <View style={styles.weekWeather}>
-            {dataWeekWeather.map((el:any,index:number)=>(
+            {data.map((el:any,index:number)=>(
    
     <View style={[styles.weekWeatherItem,{ backgroundColor:colors[index]}]} key={index}>
-                <Text style={styles.weekWeatherItemTitle}>Thursday</Text>
+                <Text style={styles.weekWeatherItemTitle}>{getDayWeek(el.date)}</Text>
                 <View style={styles.tomorowDetailItemIcon}>
-                    <Text style={styles.tomorowDetailItemIconTitle}>20 *</Text>
+                    <Text style={styles.tomorowDetailItemIconTitle}>{el.temp.toFixed(0)} °C</Text>
                     <Image
-                        source={require("../../../assets/iconWeather/sun.png")}
+                        source={{uri:`https:${el.icon}`}}
                         style={{ width: 30, height: 30 }}
                     />
                 </View>
