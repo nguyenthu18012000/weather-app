@@ -8,5 +8,6 @@
     "strict": true,
     "skipLibCheck": true
   },
+  "noImplicitAny": false,
   "extends": "expo/tsconfig.base"
 }
