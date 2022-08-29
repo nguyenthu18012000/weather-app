@@ -1,14 +1,6 @@
 import {StyleSheet} from "react-native";
 
 export const styles = StyleSheet.create({
-  DetailWeather: {
-    fontSize: 20,
-    marginTop: 10,
-  },
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
   tomorowHeader:{
     flexDirection:"row",
     justifyContent:"space-between",
@@ -44,33 +36,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom:10
   },
-  textTitle: {
-    fontSize: 20,
-    color: "black",
-    fontWeight: "600"
-  },
-  weekWeather:{
-    marginTop:10,
-  },
-  weekWeatherItem:{
-    paddingLeft:20,
-    paddingRight:20,
-    width:"100%",
-    height:55,
-    borderStyle:"solid",
-    borderColor:"#fec283",
-    // borderWidth:1,
-    borderRadius:15,
-    marginBottom:10,
-    flexDirection:"row",
-    justifyContent:"space-between"
-  },
-  weekWeatherItemTitle:{
-    marginTop:15,
-    fontWeight:"400",
-    fontSize:14,
-    color:"#303345"
-  },
+
   tomorowDetailItemIcon:{
     marginTop:10,
     flexDirection:"row"
