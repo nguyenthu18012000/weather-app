@@ -3,20 +3,21 @@ import React, { useState } from 'react';
 import { styleTodayWeather } from './styles';
 
 type Props = {
+  location: any;
   currentWeather: any;
 }
-const TodayWeather = ({ currentWeather }: Props) => {
+const TodayWeather = ({ location, currentWeather }: Props) => {
 
   const getDay = () => {
     const today = new Date();
-    // console.log(today)
-    return 'Tue, Jun 32';
+    return today.toDateString();
   }
 
   return (
     <View>  
       <View style={styleTodayWeather.todayWeatherHeader}>
-        <Text style={styleTodayWeather.cityName}>Stockholm, Sweden</Text>
+        <Text style={styleTodayWeather.cityName}>{location?.name}</Text>
+        <Text style={styleTodayWeather.cityName}>{location?.country}</Text>
       </View>
       <View style={styleTodayWeather.todayWeatherBody}>
         <Text style={styleTodayWeather.date}>{getDay()}</Text>
