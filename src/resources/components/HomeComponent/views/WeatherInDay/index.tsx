@@ -4,9 +4,10 @@ import { styleWeatherInDay } from './styles';
 
 type Props = {
   navigation: any;
+  dataNext7DaysWeather: any[];
 };
 
-const WeatherInDay = ({ navigation }: Props) => {
+const WeatherInDay = ({ navigation, dataNext7DaysWeather }: Props) => {
   const s = [1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12];
   return (
     <View>
@@ -15,7 +16,7 @@ const WeatherInDay = ({ navigation }: Props) => {
           <Text style={styleWeatherInDay.textTitle}>Today</Text>
           <Text style={styleWeatherInDay.textTitle}>Tomorrow</Text>
         </View>
-        <Text style={styleWeatherInDay.textTitle} onPress={() => navigation.navigate('Detail')}>Next 7 days</Text>
+        <Text style={styleWeatherInDay.textTitle} onPress={() => navigation.navigate('Detail', {dataNext7DaysWeather: dataNext7DaysWeather})}>Next 7 days</Text>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {s.map((hour: any, key: number) => (
