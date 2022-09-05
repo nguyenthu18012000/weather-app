@@ -8,10 +8,9 @@ type Props = {
 const Layout = ({ children }: Props) => {
   const styles = StyleSheet.create({
     container: {
-      marginTop: 30,
-      paddingLeft: 30,
-      paddingRight: 20,
-      height: "100%"
+      
+      height: "100%",
+      position:"relative"
     },
     linear: {
       flex: 1,
