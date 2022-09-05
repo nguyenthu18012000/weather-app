@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { View } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import { Button, DrawerLayoutAndroid, Text, StyleSheet, View } from "react-native";
 import WeatherServices from "../../services/weather";
 import Loading from "../common/loading";
 import { style } from "./styles";
-import Header from "./views/Header";
 import TodayWeather from "./views/TodayWeather";
 import WeatherInDay from "./views/WeatherInDay";
+import IconEnt from 'react-native-vector-icons/Entypo';
 
 type Props = {
     navigation: any;
@@ -41,25 +41,42 @@ const HomeComponent = ({ navigation }: Props) => {
     useEffect(() => {
         getDataWeather();
     }, [])
-
+    const drawer = useRef<any>(null)
+    const navigationView = () => (
+        <Text>ha</Text>
+    )
     return (
-        <View style={style.HomeWeather}>
-            <Header />
-            {
-                isLoading
-                ? <Loading />
-                : <>
-                    <TodayWeather location={location} currentWeather={dataCurrentWeather} />
-                    <WeatherInDay
-                        now={location?.localtime}
-                        dataTodayWeather={dataTodayWeather}
-                        dataTomorrowWeather={dataTomorrowWeather}
-                        dataNext7DaysWeather={dataNext7DaysWeather}
-                        navigation={navigation}
-                    />
-                </>
-            }
-        </View>
+        <DrawerLayoutAndroid
+            ref={drawer}
+            drawerWidth={300}
+            drawerPosition="left"
+            renderNavigationView={navigationView}
+        >
+            <View style={style.HomeWeather}>
+                <View style={style.head}>
+                    <IconEnt name='menu' style={style.icon} onPress={() => {
+                        drawer.current.openDrawer()
+                        console.log(1)
+                    }} />
+                    <Text style={style.item}>Weather app</Text>
+                    <Text></Text>
+                </View>
+                {
+                    isLoading
+                        ? <Loading />
+                        : <>
+                            <TodayWeather location={location} currentWeather={dataCurrentWeather} />
+                            <WeatherInDay
+                                now={location?.localtime}
+                                dataTodayWeather={dataTodayWeather}
+                                dataTomorrowWeather={dataTomorrowWeather}
+                                dataNext7DaysWeather={dataNext7DaysWeather}
+                                navigation={navigation}
+                            />
+                        </>
+                }
+            </View>
+        </DrawerLayoutAndroid>
     );
 }
 
