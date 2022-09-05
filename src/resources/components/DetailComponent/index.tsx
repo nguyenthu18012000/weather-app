@@ -3,70 +3,18 @@ import { styles } from './styles'
 import React, { useEffect, useState } from "react";
 import Tommorow from "./views/Tomorrow";
 import WeekWeather from "./views/WeekWeather";
+import Icon from 'react-native-vector-icons/AntDesign'
 import { sendGet } from "../../helpers/axios";
-export default function DetailWeather() {
-    const [dataWeatherWeek,setDataWeatherWeek]= useState<any>()
-    const [dataWeatherCurrent,setDataWeatherCurrent]= useState<any>({
-      location:{
-        country:0,
-        name:0
-      },
-      current:{
-        temp:0,
-        text:0,
-        icon:0,
-        wind:0,
-        humidity:0,
-        uv:0
-      }
-    })
-    const getWeatherWeek = async ()=>{
-      try{
-        const res = await sendGet("http://api.weatherapi.com/v1/forecast.json?key=ed8f0460dac348aa85e33105222908&q=HaNoi&days=7&aqi=no&alerts=no");
-        if(res) {
-          const {location,current,forecast}= res.data
-          const {forecastday}=forecast
-          const weatherWeek = forecastday.map((el:any)=>{
-            return {
-              date:el.date,
-              temp:el.day.maxtemp_c,
-              icon:el.day.condition.icon
-            }
-          })
-          const data ={
-            location:{
-              country:location.country,
-              name:location.name
-            },
-            current:{
-              temp:current.temp_c,
-              text:current?.condition?.text,
-              icon:current?.condition?.icon,
-              wind:current?.wind_kph,
-              humidity:current?.humidity,
-              uv:current?.uv
-            }
-          }
-          setDataWeatherWeek(weatherWeek)
-          setDataWeatherCurrent(data)
-        }
-      }catch(e){
-        console.log(e)
-      }
-    }
-
-  useEffect(()=>{
-    getWeatherWeek()
-  },[])
+export default function DetailWeather({data,navigation}:any) {
   return (
     <View style={styles.DetailWeather}>
       <View style={styles.header}>
-        <Text></Text>
+        <Icon name="arrowleft" style={{fontSize:20,marginTop:5}} onPress={() => navigation.navigate('Home')}/>
         <Text style={styles.textTitle}>Next 7 Days</Text>
         <Text></Text>
       </View>
-      <Tommorow data={dataWeatherCurrent} />
-      <WeekWeather data ={dataWeatherWeek}/>
+      <Tommorow data={data[0]} />
+      <WeekWeather data ={data}/>
     </View>
   );
 }
