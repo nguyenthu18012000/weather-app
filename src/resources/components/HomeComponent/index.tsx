@@ -9,13 +9,15 @@ import IconEnt from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import storage from "../../helpers/storage";
-
+import Minus from 'react-native-vector-icons/Feather';
+import DotSingle from 'react-native-vector-icons/Entypo';
 type Props = {
     navigation: any;
 };
 
 const HomeComponent = ({ navigation }: Props) => {
     const [location, setLocation] = useState<any>();
+    const [isOpen,setIsOpen] = useState<boolean>(false);
     const [currentLocation, setCurrentLocation] = useState<any>('Hanoi');
     const [listLocation, setListLocation] = useState<any[]>([]);
     const [dataListLocation, setDataListLocation] = useState<any[]>([]);
@@ -187,13 +189,19 @@ const HomeComponent = ({ navigation }: Props) => {
             drawerWidth={350}
             drawerPosition="left"
             renderNavigationView={navigationView}
+            onDrawerOpen={() =>setIsOpen(true)}
+            onDrawerClose={() =>setIsOpen(false)}
         >
             <View style={style.HomeWeather}>
                 <View style={style.head}>
-                    <IconEnt name='menu' style={style.icon} onPress={() => {
-                        drawer.current.openDrawer()
-                    }} />
-                    <Text style={style.item}>Weather app</Text>
+                    <Text></Text>
+                    {!isOpen?<View style={style.headIcon}>
+                    <DotSingle style={{fontSize: 25,paddingTop:12}} name="dot-single"/>
+                    <Minus style={{fontSize: 50}}  name="minus"/>
+                    </View>:<View style={style.headIcon}>
+                    <Minus style={{fontSize: 50}}  name="minus"/>
+                    <DotSingle style={{fontSize: 25,paddingTop:12}} name="dot-single"/>
+                    </View>}
                     <Text></Text>
                 </View>
                 {

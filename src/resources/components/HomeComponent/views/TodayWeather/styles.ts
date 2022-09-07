@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 
 export const styleTodayWeather = StyleSheet.create({
   todayWeatherHeader: {
-    marginTop: 20,
   },
   cityName: {
     fontSize: 30,
