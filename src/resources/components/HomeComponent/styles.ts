@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export const style = StyleSheet.create({
   HomeWeather: {
     fontSize: 20,
-    marginTop: 40,
+    marginTop: 20,
     paddingLeft: 30,
     paddingRight: 20,
   },
@@ -14,8 +14,12 @@ export const style = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between"
   },
-  item:{
+  headIcon: {
+    flexDirection: "row",
     fontSize: 20
+  },
+  item:{
+    fontSize: 20,
   },
   menu: {
     backgroundColor: '#ffd4ae',
@@ -52,6 +56,7 @@ export const style = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: 10,
     marginBottom: 10,
+    paddingLeft: 10,
     borderRadius: 3,
     height: 40
   }
